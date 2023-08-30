@@ -8,6 +8,8 @@ import {
   getStylesRef,
   rem,
 } from "@mantine/core";
+import ImageModal from "./ImageModal";
+import React, { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -19,7 +21,7 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[0],
 
     [`&:hover .${getStylesRef("image")}`]: {
-      transform: "scale(1.03)",
+      transform: "scale(1.1)",
     },
   },
 
@@ -66,60 +68,63 @@ const useStyles = createStyles((theme) => ({
 
 function ImageCard({ image, title, author, views, comments, link }) {
   const { classes, theme } = useStyles();
+  const [opened, setOpened] = useState(false);
 
   return (
-    <Card
-      p="lg"
-      shadow="lg"
-      className={classes.card}
-      radius="md"
-      component="a"
-      href={link}
-      target="_blank"
-    >
-      <div
-        className={classes.image}
-        style={{ backgroundImage: `url(${image})` }}
-      />
-      <div className={classes.overlay} />
+    <>
+      <Card
+        p="lg"
+        shadow="lg"
+        className={classes.card}
+        radius="md"
+        component="a"
+        onClick={() => setOpened(true)}
+      >
+        <div
+          className={classes.image}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+        <div className={classes.overlay} />
 
-      <div className={classes.content}>
-        <div>
-          <Text size="lg" className={classes.title} weight={500}>
-            {title}
-          </Text>
-
-          <Group position="apart" spacing="xs">
-            <Text size="sm" className={classes.author}>
-              {author}
+        <div className={classes.content}>
+          <div>
+            <Text size="lg" className={classes.title} weight={500}>
+              {title}
             </Text>
 
-            <Group spacing="lg">
-              <Center>
-                <IconEye
-                  size="1rem"
-                  stroke={1.5}
-                  color={theme.colors.dark[2]}
-                />
-                <Text size="sm" className={classes.bodyText}>
-                  {views}
-                </Text>
-              </Center>
-              <Center>
-                <IconMessageCircle
-                  size="1rem"
-                  stroke={1.5}
-                  color={theme.colors.dark[2]}
-                />
-                <Text size="sm" className={classes.bodyText}>
-                  {comments}
-                </Text>
-              </Center>
+            <Group position="apart" spacing="xs">
+              <Text size="sm" className={classes.author}>
+                {author}
+              </Text>
+
+              <Group spacing="lg">
+                <Center>
+                  <IconEye
+                    size="1rem"
+                    stroke={1.5}
+                    color={theme.colors.dark[2]}
+                  />
+                  <Text size="sm" className={classes.bodyText}>
+                    {views}
+                  </Text>
+                </Center>
+                <Center>
+                  <IconMessageCircle
+                    size="1rem"
+                    stroke={1.5}
+                    color={theme.colors.dark[2]}
+                  />
+                  <Text size="sm" className={classes.bodyText}>
+                    {comments}
+                  </Text>
+                </Center>
+              </Group>
             </Group>
-          </Group>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+      <ImageModal opened={opened} setOpened={setOpened} image={image} />
+    </>
   );
 }
 
