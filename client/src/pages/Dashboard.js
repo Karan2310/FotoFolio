@@ -5,6 +5,7 @@ import axios from "axios";
 import { SERVER_URL } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logoutUser } from "../slice/UserSlice";
+import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -39,19 +40,10 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>Dashboard</div>
-      <h1>Welcome {user.name}</h1>
-      <button
-        radius="md"
-        onClick={() => {
-          dispatch(logoutUser());
-          removeCookie("token");
-          removeCookie("userId");
-          window.location.href = "/login";
-        }}
-      >
-        Logout
-      </button>
+      <Navbar />
+      <div className="body p-4 px-5">
+        <h2 className="fw-700">Welcome {user.name},</h2>
+      </div>
     </>
   );
 };

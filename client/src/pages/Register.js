@@ -106,7 +106,7 @@ export default function Register(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Register for Inked Pages
+          Register for FotoFolio
         </Text>
 
         <Divider my="lg"></Divider>

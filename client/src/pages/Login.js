@@ -123,7 +123,7 @@ export default function Login(PaperProps) {
         }}
       >
         <Text size="lg" weight={500}>
-          Welcome to Inked Pages
+          Welcome to FotoFolio
         </Text>
 
         <Divider my="lg"></Divider>
@@ -165,7 +165,7 @@ export default function Login(PaperProps) {
 
           <Group position="apart" mt="xl">
             <Anchor component="button" type="button" color="dimmed" size="xs">
-              New to Inked Pages? <NavLink to="/register">Register</NavLink>
+              New to FotoFolio? <NavLink to="/register">Register</NavLink>
             </Anchor>
             <Button type="submit" radius="xl">
               {loading ? <Loader color="white" variant="dots" /> : "Login"}
