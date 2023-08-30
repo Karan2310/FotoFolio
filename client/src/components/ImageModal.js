@@ -73,7 +73,7 @@ const ImageModal = ({ opened, setOpened, image }) => {
           onClick={downloadImage}
         >
           <i
-            class="fa-solid fa-download"
+            className="fa-solid fa-download"
             style={{ color: "#000", fontSize: "0.9rem" }}
           ></i>
         </Button>

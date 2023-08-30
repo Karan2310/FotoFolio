@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser, logoutUser } from "../slice/UserSlice";
 import Navbar from "../components/Navbar";
 import ScreenTabs from "../components/ScreenTabs";
+import AddImage from "../components/AddImage";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const Dashboard = () => {
         <div className="my-3 my-lg-2">
           <ScreenTabs />
         </div>
+        <AddImage />
       </div>
     </>
   );

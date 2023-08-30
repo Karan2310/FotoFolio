@@ -108,7 +108,7 @@ function ImageCard({ image, title, author, views, comments, link }) {
                     {views}
                   </Text>
                 </Center>
-                <Center>
+                {/* <Center>
                   <IconMessageCircle
                     size="1rem"
                     stroke={1.5}
@@ -117,7 +117,7 @@ function ImageCard({ image, title, author, views, comments, link }) {
                   <Text size="sm" className={classes.bodyText}>
                     {comments}
                   </Text>
-                </Center>
+                </Center> */}
               </Group>
             </Group>
           </div>
