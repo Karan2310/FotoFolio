@@ -8,7 +8,7 @@ const Navbar = () => {
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
   return (
     <>
-      <div className="navbar -flex align-items-center justify-content-between p-3 px-5 bg-purple">
+      <div className="navbar -flex align-items-center justify-content-between p-3 p-lg-4 px-lg-5 bg-purple">
         <h3 className="fw-800">FOTOFOLIO</h3>
         <button
           className="logout-btn "

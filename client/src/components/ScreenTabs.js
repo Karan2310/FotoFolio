@@ -1,100 +1,58 @@
-import React, { useEffect, useState } from "react";
 import { Tabs } from "@mantine/core";
 import {
   IconPhoto,
   IconMessageCircle,
   IconSettings,
-  IconUsers,
-  IconUser,
 } from "@tabler/icons-react";
-import AllBlogs from "../pages/AllBlogs";
-import MyBlogs from "../pages/MyBlogs";
-import axios from "axios";
-import { Grid } from "@mantine/core";
-import { useCookies } from "react-cookie";
-import { Skeleton } from "@mantine/core";
 
-const ScreenTabs = ({ getBlogs, blogs, fetch, loading }) => {
-  useEffect(() => {
-    getBlogs();
-  }, [fetch]);
-
-  const [cookies] = useCookies(["userId"]);
+const ScreenTabs = () => {
   return (
-    <>
-      <Tabs defaultValue="all">
-        <Tabs.List
-          grow
-          position="apart"
-          style={{
-            position: "sticky",
-            top: "0",
-            backgroundColor: "#FFF",
-            zIndex: "100",
+    <Tabs variant="pills" defaultValue="all" color="violet">
+      <Tabs.List
+        grow
+        position="center"
+        sx={{
+          backgroundColor: "#f4f4f4",
+        }}
+      >
+        <Tabs.Tab
+          value="all"
+          // icon={<IconPhoto size="0.8rem" />}
+          sx={{
+            fontWeight: "600",
+            fontSize: "1rem",
+            padding: "0.8rem",
+            "&:hover": {
+              backgroundColor: "#6f2cf41a",
+            },
           }}
         >
-          <Tabs.Tab value="all" icon={<IconUsers size="0.8rem" />}>
-            All Blogs {`(${blogs.length})`}
-          </Tabs.Tab>
-          <Tabs.Tab value="my" icon={<IconUser size="0.8rem" />}>
-            My Blogs{" "}
-            {`(${
-              Array.isArray(blogs)
-                ? blogs.filter((blog) => blog.authorId === cookies.userId)
-                    .length
-                : 0
-            })`}
-          </Tabs.Tab>
-        </Tabs.List>
+          All Photos
+        </Tabs.Tab>
+        <Tabs.Tab
+          value="my"
+          // icon={<IconMessageCircle size="0.8rem" />}
+          sx={{
+            fontWeight: "600",
+            fontSize: "1rem",
+            padding: "0.8rem",
+            "&:hover": {
+              backgroundColor: "#6f2cf41a",
+            },
+          }}
+        >
+          My Photos
+        </Tabs.Tab>
+      </Tabs.List>
 
-        {loading && (
-          <>
-            <Grid mt={30}>
-              <Grid.Col md={6} lg={3}>
-                <Skeleton height={8} radius="xl" width="30%" mb={30} />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-              </Grid.Col>
-              <Grid.Col md={6} lg={3}>
-                <Skeleton height={8} radius="xl" width="30%" mb={30} />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-              </Grid.Col>
-              <Grid.Col md={6} lg={3}>
-                <Skeleton height={8} radius="xl" width="30%" mb={30} />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-              </Grid.Col>
-              <Grid.Col md={6} lg={3}>
-                <Skeleton height={8} radius="xl" width="30%" mb={30} />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-                <Skeleton height={8} mt={6} width="70%" radius="xl" />
-              </Grid.Col>
-            </Grid>
-          </>
-        )}
+      <Tabs.Panel value="all" pt="lg">
+        Gallery tab content
+      </Tabs.Panel>
 
-        <Tabs.Panel value="all" pt="md">
-          <AllBlogs blogs={blogs} getBlogs={getBlogs} loading={loading} />
-        </Tabs.Panel>
-
-        <Tabs.Panel value="my" pt="md">
-          <MyBlogs blogs={blogs} getBlogs={getBlogs} loading={loading} />
-        </Tabs.Panel>
-      </Tabs>
-    </>
+      <Tabs.Panel value="my" pt="lg">
+        Messages tab content
+      </Tabs.Panel>
+    </Tabs>
   );
 };
 

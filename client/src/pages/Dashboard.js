@@ -6,6 +6,7 @@ import { SERVER_URL } from "../config";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logoutUser } from "../slice/UserSlice";
 import Navbar from "../components/Navbar";
+import ScreenTabs from "../components/ScreenTabs";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,11 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="body p-4 px-5">
+      <div className="body p-3 p-lg-4 px-lg-5">
         <h2 className="fw-700">Welcome {user.name},</h2>
+        <div className="my-5">
+          <ScreenTabs />
+        </div>
       </div>
     </>
   );
