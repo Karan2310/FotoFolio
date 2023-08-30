@@ -31,7 +31,6 @@ const ImageModal = ({ opened, setOpened, image }) => {
       title={null}
       centered
       withCloseButton={false}
-      hideOverlay
       sx={{
         ".mantine-Modal-content": {
           display: "flex",
@@ -47,7 +46,13 @@ const ImageModal = ({ opened, setOpened, image }) => {
         },
       }}
     >
-      <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         <img
           src={image}
           alt=""

@@ -30,6 +30,7 @@ const useStyles = createStyles((theme) => ({
     ref: getStylesRef("image"),
     backgroundSize: "cover",
     transition: "transform 500ms ease",
+    backgroundPosition: "center",
   },
 
   overlay: {
