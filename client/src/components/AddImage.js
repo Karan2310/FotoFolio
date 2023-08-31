@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AddImageModal from "./AddImageModal";
-const AddImage = () => {
+const AddImage = ({ changeRefresh }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -28,6 +28,7 @@ const AddImage = () => {
         <i className="fa-solid fa-plus"></i>
       </button>
       <AddImageModal
+        changeRefresh={changeRefresh}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />

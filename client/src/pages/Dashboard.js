@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -16,6 +16,7 @@ const Dashboard = () => {
   const Navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const posts = useSelector((state) => state.posts);
+  const [refreshPage, setRefreshPage] = useState(false);
 
   const getUser = async () => {
     try {
@@ -48,13 +49,17 @@ const Dashboard = () => {
     }
   };
 
+  const changeRefresh = () => {
+    setRefreshPage(!refreshPage);
+  };
+
   useEffect(() => {
     getUser();
   }, []);
 
   useEffect(() => {
     getAllPosts();
-  }, []);
+  }, [refreshPage]);
 
   return (
     <>
@@ -64,7 +69,7 @@ const Dashboard = () => {
         <div className="my-3 my-lg-2">
           <ScreenTabs />
         </div>
-        <AddImage />
+        <AddImage changeRefresh={changeRefresh} />
       </div>
     </>
   );

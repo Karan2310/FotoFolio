@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { SERVER_URL } from "../config";
 
-const AddImageModal = ({ isModalOpen, setIsModalOpen }) => {
+const AddImageModal = ({ isModalOpen, setIsModalOpen, changeRefresh }) => {
   const theme = useMantineTheme();
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
   const [previewImage, setPreviewImage] = useState(null);
@@ -53,6 +53,7 @@ const AddImageModal = ({ isModalOpen, setIsModalOpen }) => {
       };
       setUploading(true);
       const response = await axios.post(`${SERVER_URL}/posts/upload`, val);
+      changeRefresh();
       form.reset();
       setPreviewImage(null);
       closeModal();
