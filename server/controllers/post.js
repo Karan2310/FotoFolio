@@ -31,7 +31,7 @@ export const postImage = async (req, res) => {
 export const getPosts = async (req, res) => {
   try {
     const posts = await Post.find();
-    res.status(200).send(post);
+    res.status(200).send(posts);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

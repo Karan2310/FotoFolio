@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/post", postRoutes);
+app.use("/posts", postRoutes);
 
 app.put("/profile/:id", async (req, res) => {
   const id = req.params.id;

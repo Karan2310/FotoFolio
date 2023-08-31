@@ -52,7 +52,7 @@ const AddImageModal = ({ isModalOpen, setIsModalOpen }) => {
         authorName: userName,
       };
       setUploading(true);
-      const response = await axios.post(`${SERVER_URL}/post/upload`, val);
+      const response = await axios.post(`${SERVER_URL}/posts/upload`, val);
       form.reset();
       setPreviewImage(null);
       closeModal();
@@ -60,6 +60,7 @@ const AddImageModal = ({ isModalOpen, setIsModalOpen }) => {
       return response.data;
     } catch (error) {
       console.log(error);
+      console.log("Something went wrong!");
     } finally {
       setUploading(false);
     }

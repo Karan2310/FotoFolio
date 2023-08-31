@@ -8,12 +8,14 @@ import { setUser, logoutUser } from "../slice/UserSlice";
 import Navbar from "../components/Navbar";
 import ScreenTabs from "../components/ScreenTabs";
 import AddImage from "../components/AddImage";
+import { setPosts } from "../slice/PostSlice.js";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
   const Navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  const posts = useSelector((state) => state.posts);
 
   const getUser = async () => {
     try {
@@ -36,9 +38,23 @@ const Dashboard = () => {
     }
   };
 
+  const getAllPosts = async () => {
+    try {
+      const res = await axios.get(`${SERVER_URL}/posts/`);
+      dispatch(setPosts(res.data));
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong!");
+    }
+  };
+
   useEffect(() => {
     getUser();
   }, []);
+
+  useEffect(() => {
+    getAllPosts();
+  }, [posts]);
 
   return (
     <>
