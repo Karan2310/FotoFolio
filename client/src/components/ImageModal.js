@@ -40,6 +40,8 @@ const ImageModal = ({ opened, setOpened, image }) => {
           backgroundColor: "transparent",
           boxShadow: "none",
           padding: 0,
+          maxHeight: "100%",
+          overflow: "hidden",
         },
         ".mantine-Modal-body": {
           padding: 0,
@@ -51,12 +53,18 @@ const ImageModal = ({ opened, setOpened, image }) => {
           position: "relative",
           width: "100%",
           height: "100%",
+          maxHeight: "90vh",
         }}
       >
         <img
           src={image}
           alt=""
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            maxHeight: "inherit",
+          }}
         />
 
         <Button
