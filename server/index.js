@@ -13,7 +13,10 @@ app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use(
   cors({
-    origin: ["", "http://localhost:3000"],
+    origin: [
+      "https://foto-folio-client-noy3f47j9-karan2310.vercel.app/",
+      "http://localhost:3000",
+    ],
     methods: ["POST", "GET", "DELETE", "PATCH", "PUT"],
     credentials: true,
   })
