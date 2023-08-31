@@ -31,9 +31,9 @@ export const postImage = async (req, res) => {
 export const getPosts = async (req, res) => {
   try {
     const posts = await Post.find();
-    res.status(200).send(posts);
+    res.status(200).json(posts);
   } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
