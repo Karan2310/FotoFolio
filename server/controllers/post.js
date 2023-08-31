@@ -21,7 +21,7 @@ export const postImage = async (req, res) => {
     });
 
     const savedPost = await post.save();
-    res.statusCode(200).send(savedPost);
+    res.status(200).send(savedPost);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

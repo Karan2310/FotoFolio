@@ -5,9 +5,11 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
 import postRoutes from "./routes/post.js";
 import User from "./models/User.js";
+import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config();
+app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use(
   cors({

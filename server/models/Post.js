@@ -1,24 +1,24 @@
 import mongoose from "mongoose";
 
-const CommentSchema = mongoose.Schema(
-  {
-    content: {
-      type: String,
-      required: true,
-      minlength: 2,
-      maxlength: 500,
-    },
-    authorId: {
-      type: String,
-      required: true,
-    },
-    authorName: {
-      type: String,
-      required: true,
-    },
-  },
-  { timestamps: true }
-);
+// const CommentSchema = mongoose.Schema(
+//   {
+//     content: {
+//       type: String,
+//       required: true,
+//       minlength: 2,
+//       maxlength: 500,
+//     },
+//     authorId: {
+//       type: String,
+//       required: true,
+//     },
+//     authorName: {
+//       type: String,
+//       required: true,
+//     },
+//   },
+//   { timestamps: true }
+// );
 
 const PostSchema = mongoose.Schema(
   {
@@ -29,12 +29,11 @@ const PostSchema = mongoose.Schema(
       max: 50,
     },
     path: {
-      type: String,
+      type: Object,
       required: true,
     },
     views: {
       type: Number,
-      required: true,
       default: 0,
     },
     authorId: {
@@ -49,7 +48,7 @@ const PostSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    comments: [CommentSchema],
+    // comments: [CommentSchema],
   },
   { timestamps: true }
 );

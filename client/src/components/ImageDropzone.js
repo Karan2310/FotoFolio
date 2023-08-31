@@ -3,7 +3,7 @@ import { Group, Text, useMantineTheme, rem } from "@mantine/core";
 import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 
-const ImageDropzone = ({ previewImage, setPreviewImage }) => {
+const ImageDropzone = ({ previewImage, setPreviewImage, uploading }) => {
   const theme = useMantineTheme();
 
   const handleDrop = (files) => {
@@ -19,6 +19,7 @@ const ImageDropzone = ({ previewImage, setPreviewImage }) => {
 
   return (
     <Dropzone
+      loading={uploading}
       onDrop={handleDrop}
       onReject={(files) => console.log("rejected files", files)}
       maxSize={3 * 1024 ** 2}
