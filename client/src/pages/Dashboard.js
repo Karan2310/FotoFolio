@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllPosts();
-  }, [posts]);
+  }, []);
 
   return (
     <>
