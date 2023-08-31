@@ -33,7 +33,7 @@ const Dashboard = () => {
     } catch (err) {
       removeCookie("token");
       removeCookie("userId");
-      alert("You have been logged out!");
+      // alert("You have been logged out!");
       Navigate("/login");
     }
   };
