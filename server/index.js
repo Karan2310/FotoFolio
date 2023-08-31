@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
+import postRoutes from "./routes/post.js";
 import User from "./models/User.js";
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/post", postRoutes);
 
 app.put("/profile/:id", async (req, res) => {
   const id = req.params.id;

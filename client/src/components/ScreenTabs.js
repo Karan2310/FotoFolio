@@ -42,7 +42,7 @@ const ScreenTabs = () => {
             },
           }}
         >
-          My Photos
+          My Uploads
         </Tabs.Tab>
       </Tabs.List>
 
@@ -94,7 +94,30 @@ const ScreenTabs = () => {
       </Tabs.Panel>
 
       <Tabs.Panel value="my" pt="lg">
-        Messages tab content
+        <div className="container-fluid m-0 p-0">
+          <div className="row">
+            <div className="col-md-6 col-lg-4 mt-4">
+              <ImageCard
+                image="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+                title="Sample Title"
+                author="John Doe"
+                views="100"
+                comments="5"
+                link="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+              />
+            </div>
+            <div className="col-md-6 col-lg-4 mt-4">
+              <ImageCard
+                image="https://images.pexels.com/photos/1353126/pexels-photo-1353126.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                title="Sample Title"
+                author="John Doe"
+                views="100"
+                comments="5"
+                link="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?cs=srgb&dl=pexels-pixabay-268533.jpg&fm=jpg"
+              />
+            </div>
+          </div>
+        </div>
       </Tabs.Panel>
     </Tabs>
   );
