@@ -35,7 +35,7 @@ A web application built with React, Redux, and cloud storage integration for use
 
 ## Deployment
 
-Deploy the app to your chosen hosting service (e.g., AWS, Heroku).
+https://foto-folio-kd.vercel.app/
 
 ## Contributing
 
