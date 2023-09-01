@@ -7,7 +7,7 @@ A web application built with React, Redux, and cloud storage integration for use
 ## Features
 
 - **User Authentication**: Secure user registration and login system.
-- **Image Upload**: Easily upload and manage your images with titles and descriptions.
+- **Image Upload**: Easily upload and manage your images with title.
 - **Cloud Storage Integration**: Seamlessly integrate with Cloudinary for efficient image storage.
 - **Image Gallery**: Browse and interact with your uploaded images in a beautiful gallery.
 - **Image Viewing Tracking**: Keep track of how many times your images have been viewed.
@@ -31,7 +31,7 @@ Explore the [Live Demo](https://foto-folio-kd.vercel.app/) to see FotoFolio in a
 ## Usage
 
 1. **Register**: Create an account to access image uploading and tracking features.
-2. **Upload Images**: Upload your images, providing titles and optional descriptions.
+2. **Upload Images**: Upload your images, providing titles.
 3. **Gallery View**: Browse your image collection in a visually appealing gallery.
 4. **Track Views**: Monitor the number of views for each of your uploaded images.
 5. **Download Images**: Download your uploaded images for offline use or sharing with others.
