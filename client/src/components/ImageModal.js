@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button } from "@mantine/core";
 import { CloseButton } from "@mantine/core";
 
-const ImageModal = ({ opened, setOpened, image }) => {
+const ImageModal = ({ opened, setOpened, image, title }) => {
   const downloadImage = () => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", image, true);
@@ -14,7 +14,7 @@ const ImageModal = ({ opened, setOpened, image }) => {
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = "downloaded_image.jpg";
+      a.download = `${title}.jpg`;
       a.click();
 
       URL.revokeObjectURL(url);

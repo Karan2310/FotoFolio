@@ -151,7 +151,12 @@ function ImageCard({ id, image, title, author, views, comments, link }) {
           </div>
         </div>
       </Card>
-      <ImageModal opened={opened} setOpened={setOpened} image={image} />
+      <ImageModal
+        opened={opened}
+        setOpened={setOpened}
+        image={image}
+        title={title}
+      />
     </>
   );
 }
