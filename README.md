@@ -30,7 +30,8 @@ Explore the [Live Demo](https://foto-folio-kd.vercel.app/) to see FotoFolio in a
 2. **Upload Images**: Upload your images, providing titles and optional descriptions.
 3. **Gallery View**: Browse your image collection in a visually appealing gallery.
 4. **Track Views**: Monitor the number of views for each of your uploaded images.
-5. **Delete Images**: Remove unwanted images from your gallery as needed.
+5. **Download Images**: Download your uploaded images for offline use or sharing with others.
+6. **Delete Images**: Remove unwanted images from your gallery as needed.
 
 ## Technologies
 
