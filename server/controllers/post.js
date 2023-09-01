@@ -30,10 +30,32 @@ export const postImage = async (req, res) => {
 
 export const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });
     res.status(200).json(posts);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const incrementView = async (req, res) => {
+  const postId = req.params.postId;
+  console.log(postId);
+
+  try {
+    const post = await Post.findById(postId);
+    console.log(post);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    post.views += 1;
+    await post.save();
+
+    return res
+      .status(200)
+      .json({ message: "View count incremented successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -51,11 +51,12 @@ const ScreenTabs = () => {
           <div className="row">
             {posts &&
               posts.map((post, index) => {
-                const { path, title, authorName, views } = post;
+                const { _id, path, title, authorName, views } = post;
                 return (
                   <>
                     <div className="col-md-6 col-lg-4 mt-4" key={index}>
                       <ImageCard
+                        id={_id}
                         image={path.secure_url}
                         title={title}
                         author={authorName}

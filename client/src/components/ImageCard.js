@@ -10,6 +10,8 @@ import {
 } from "@mantine/core";
 import ImageModal from "./ImageModal";
 import React, { useState } from "react";
+import { SERVER_URL } from "../config.js";
+import axios from "axios";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -67,9 +69,31 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function ImageCard({ image, title, author, views, comments, link }) {
+function ImageCard({ id, image, title, author, views, comments, link }) {
   const { classes, theme } = useStyles();
   const [opened, setOpened] = useState(false);
+
+  const increaseView = async (id) => {
+    console.log(id);
+    try {
+      const res = axios.post(`${SERVER_URL}/posts/view/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function formatViewCount(views) {
+    if (views >= 1000) {
+      const thousands = views / 1000;
+      if (thousands >= 10) {
+        return Math.floor(thousands) + "k";
+      } else {
+        return (Math.round(thousands * 10) / 10).toFixed(1) + "k";
+      }
+    } else {
+      return views.toString();
+    }
+  }
 
   return (
     <>
@@ -79,7 +103,10 @@ function ImageCard({ image, title, author, views, comments, link }) {
         className={classes.card}
         radius="md"
         component="a"
-        onClick={() => setOpened(true)}
+        onClick={() => {
+          setOpened(true);
+          increaseView(id);
+        }}
       >
         <div
           className={classes.image}
@@ -105,8 +132,8 @@ function ImageCard({ image, title, author, views, comments, link }) {
                     stroke={1.5}
                     color={theme.colors.dark[2]}
                   />
-                  <Text size="sm" className={classes.bodyText}>
-                    {views}
+                  <Text size="sm" className={classes.bodyText} title={views}>
+                    {formatViewCount(views)}
                   </Text>
                 </Center>
                 {/* <Center>
