@@ -9,17 +9,19 @@ import Navbar from "../components/Navbar";
 import ScreenTabs from "../components/ScreenTabs";
 import AddImage from "../components/AddImage";
 import { setPosts } from "../slice/PostSlice.js";
+import { LoadingOverlay } from "@mantine/core";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [cookies, removeCookie] = useCookies(["token", "userId"]);
   const Navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const posts = useSelector((state) => state.posts);
   const [refreshPage, setRefreshPage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getUser = async () => {
     try {
+      setLoading(true);
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -37,9 +39,11 @@ const Dashboard = () => {
       // alert("You have been logged out!");
       Navigate("/login");
     }
+    setLoading(false);
   };
 
   const getAllPosts = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${SERVER_URL}/posts/`);
       dispatch(setPosts(res.data));
@@ -47,6 +51,7 @@ const Dashboard = () => {
       console.log(error);
       alert("Something went wrong!");
     }
+    setLoading(false);
   };
 
   const changeRefresh = () => {
@@ -64,10 +69,11 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="body p-3 p-lg-4 px-lg-5">
+      <div className="body p-3 p-lg-4 px-lg-5" pos="relative">
         <h2 className="fw-700 mt-3 mt-md-1">Welcome {user.name},</h2>
+        <LoadingOverlay visible={loading} />
         <div className="my-3 my-lg-2">
-          <ScreenTabs changeRefresh={changeRefresh} />
+          <ScreenTabs changeRefresh={changeRefresh} setLoading={setLoading} />
         </div>
         <AddImage changeRefresh={changeRefresh} />
       </div>

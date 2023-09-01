@@ -23,7 +23,7 @@ const ImageDropzone = ({ previewImage, setPreviewImage, uploading }) => {
       onDrop={handleDrop}
       onReject={(files) => console.log("rejected files", files)}
       maxSize={3 * 1024 ** 2}
-      accept={`${IMAGE_MIME_TYPE}, image/heic, image/heif`}
+      accept={IMAGE_MIME_TYPE}
       maxFiles={1}
     >
       <Group

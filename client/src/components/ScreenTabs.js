@@ -2,7 +2,7 @@ import { Tabs } from "@mantine/core";
 import ImageCard from "./ImageCard";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-const ScreenTabs = ({ changeRefresh }) => {
+const ScreenTabs = ({ changeRefresh, setLoading }) => {
   const posts = useSelector((state) => state.posts);
   const user = useSelector((state) => state.user);
   const userId = user.id;
@@ -49,6 +49,13 @@ const ScreenTabs = ({ changeRefresh }) => {
       <Tabs.Panel value="all" pt="lg">
         <div className="container-fluid m-0 p-0">
           <div className="row">
+            {posts.length <= 0 && (
+              <>
+                <h3 className="text-center mt-5" style={{ opacity: 0.3 }}>
+                  No posts Uploaded
+                </h3>
+              </>
+            )}
             {posts &&
               posts.map((post, index) => {
                 const { _id, path, title, authorName, views, authorId } = post;
@@ -65,6 +72,7 @@ const ScreenTabs = ({ changeRefresh }) => {
                         comments="5"
                         link={path.secure_url}
                         changeRefresh={changeRefresh}
+                        setLoading={setLoading}
                       />
                     </div>
                   </>
@@ -77,6 +85,13 @@ const ScreenTabs = ({ changeRefresh }) => {
       <Tabs.Panel value="my" pt="lg">
         <div className="container-fluid m-0 p-0">
           <div className="row">
+            {myUploads.length <= 0 && (
+              <>
+                <h3 className="text-center mt-5" style={{ opacity: 0.3 }}>
+                  You haven't shared any posts yet.{" "}
+                </h3>
+              </>
+            )}
             {myUploads &&
               myUploads.map((post, index) => {
                 const { path, title, authorName, views, authorId } = post;
@@ -92,6 +107,7 @@ const ScreenTabs = ({ changeRefresh }) => {
                         comments="5"
                         link={path.secure_url}
                         changeRefresh={changeRefresh}
+                        setLoading={setLoading}
                       />
                     </div>
                   </>

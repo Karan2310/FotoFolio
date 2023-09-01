@@ -81,6 +81,7 @@ function ImageCard({
   link,
   authorId,
   changeRefresh,
+  setLoading,
 }) {
   const { classes, theme } = useStyles();
   const [opened, setOpened] = useState(false);
@@ -108,6 +109,7 @@ function ImageCard({
     }
   }
   const deletePost = async (id) => {
+    setLoading(true);
     try {
       const confirmed = window.confirm("Are you sure you want to delete?");
       if (!confirmed) {
@@ -120,6 +122,7 @@ function ImageCard({
       console.error("Error deleting post", error);
       alert("Error while deleting post");
     }
+    setLoading(false);
   };
 
   return (
