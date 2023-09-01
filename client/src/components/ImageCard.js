@@ -114,10 +114,11 @@ function ImageCard({
         return;
       }
 
-      await axios.delete(`/posts/${id}`);
+      await axios.delete(`${SERVER_URL}/posts/${id}`);
       changeRefresh();
     } catch (error) {
       console.error("Error deleting post", error);
+      alert("Error while deleting post");
     }
   };
 
