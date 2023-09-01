@@ -113,6 +113,7 @@ function ImageCard({
     try {
       const confirmed = window.confirm("Are you sure you want to delete?");
       if (!confirmed) {
+        setLoading(false);
         return;
       }
 
