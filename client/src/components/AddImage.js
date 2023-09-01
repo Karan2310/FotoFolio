@@ -12,12 +12,12 @@ const AddImage = ({ changeRefresh }) => {
         onClick={openModal}
         style={{
           position: "fixed",
-          right: "5%",
+          right: "7%",
           bottom: "7%",
           background: "#6F2CF4",
           color: "#fff",
-          height: "50px",
-          width: "50px",
+          height: "55px",
+          width: "55px",
           border: 0,
           borderRadius: "50%",
           boxShadow: "0 0 6px rgba(0, 0, 0, 0.47)",

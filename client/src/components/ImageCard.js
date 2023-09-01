@@ -74,7 +74,6 @@ function ImageCard({ id, image, title, author, views, comments, link }) {
   const [opened, setOpened] = useState(false);
 
   const increaseView = async (id) => {
-    console.log(id);
     try {
       const res = axios.post(`${SERVER_URL}/posts/view/${id}`);
     } catch (error) {
