@@ -1,7 +1,7 @@
 # FotoFolio
 <img width="1470" alt="Screenshot 2023-09-01 at 6 56 20 PM" src="https://github.com/Karan2310/FotoFolio/assets/72909842/b91a6ac7-c0b0-493f-bdf8-583e7af06cfc">
-
-
+<br/>
+<br/>
 A web application built with React, Redux, and cloud storage integration for users to upload, view, and track images. FotoFolio offers a user-friendly platform for managing and showcasing your image portfolio.
 
 ## Features
