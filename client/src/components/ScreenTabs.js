@@ -2,7 +2,7 @@ import { Tabs } from "@mantine/core";
 import ImageCard from "./ImageCard";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-const ScreenTabs = () => {
+const ScreenTabs = ({ changeRefresh }) => {
   const posts = useSelector((state) => state.posts);
   const user = useSelector((state) => state.user);
   const userId = user.id;
@@ -51,7 +51,7 @@ const ScreenTabs = () => {
           <div className="row">
             {posts &&
               posts.map((post, index) => {
-                const { _id, path, title, authorName, views } = post;
+                const { _id, path, title, authorName, views, authorId } = post;
                 return (
                   <>
                     <div className="col-md-6 col-lg-4 mt-4" key={index}>
@@ -60,9 +60,11 @@ const ScreenTabs = () => {
                         image={path.secure_url}
                         title={title}
                         author={authorName}
+                        authorId={authorId}
                         views={views}
                         comments="5"
                         link={path.secure_url}
+                        changeRefresh={changeRefresh}
                       />
                     </div>
                   </>
@@ -77,17 +79,19 @@ const ScreenTabs = () => {
           <div className="row">
             {myUploads &&
               myUploads.map((post, index) => {
-                const { path, title, authorName, views } = post;
+                const { path, title, authorName, views, authorId } = post;
                 return (
                   <>
                     <div className="col-md-6 col-lg-4 mt-4" key={index}>
                       <ImageCard
                         image={path.secure_url}
                         title={title}
+                        authorId={authorId}
                         author={authorName}
                         views={views}
                         comments="5"
                         link={path.secure_url}
+                        changeRefresh={changeRefresh}
                       />
                     </div>
                   </>

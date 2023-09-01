@@ -7,11 +7,13 @@ import {
   createStyles,
   getStylesRef,
   rem,
+  ActionIcon,
 } from "@mantine/core";
 import ImageModal from "./ImageModal";
 import React, { useState } from "react";
 import { SERVER_URL } from "../config.js";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -69,9 +71,21 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function ImageCard({ id, image, title, author, views, comments, link }) {
+function ImageCard({
+  id,
+  image,
+  title,
+  author,
+  views,
+  comments,
+  link,
+  authorId,
+  changeRefresh,
+}) {
   const { classes, theme } = useStyles();
   const [opened, setOpened] = useState(false);
+  const user = useSelector((state) => state.user);
+  const userId = user.id;
 
   const increaseView = async (id) => {
     try {
@@ -93,6 +107,19 @@ function ImageCard({ id, image, title, author, views, comments, link }) {
       return views.toString();
     }
   }
+  const deletePost = async (id) => {
+    try {
+      const confirmed = window.confirm("Are you sure you want to delete?");
+      if (!confirmed) {
+        return;
+      }
+
+      await axios.delete(`/posts/${id}`);
+      changeRefresh();
+    } catch (error) {
+      console.error("Error deleting post", error);
+    }
+  };
 
   return (
     <>
@@ -101,41 +128,55 @@ function ImageCard({ id, image, title, author, views, comments, link }) {
         shadow="lg"
         className={classes.card}
         radius="md"
+        style={{ position: "relative" }}
         component="a"
-        onClick={() => {
-          setOpened(true);
-          increaseView(id);
-        }}
       >
+        {authorId === userId && (
+          <ActionIcon
+            className="post-delete-btn"
+            variant="light"
+            color="red"
+            onClick={() => deletePost(id)}
+          >
+            <i class="fa-regular fa-trash-can"></i>
+          </ActionIcon>
+        )}
         <div
-          className={classes.image}
-          style={{ backgroundImage: `url(${image})` }}
-        />
-        <div className={classes.overlay} />
+          onClick={() => {
+            setOpened(true);
+            increaseView(id);
+          }}
+          style={{ height: "100%" }}
+        >
+          <div
+            className={classes.image}
+            style={{ backgroundImage: `url(${image})` }}
+          />
+          <div className={classes.overlay} />
 
-        <div className={classes.content}>
-          <div>
-            <Text size="lg" className={classes.title} weight={500}>
-              {title}
-            </Text>
-
-            <Group position="apart" spacing="xs">
-              <Text size="sm" className={classes.author}>
-                {author}
+          <div className={classes.content}>
+            <div>
+              <Text size="lg" className={classes.title} weight={500}>
+                {title}
               </Text>
 
-              <Group spacing="lg">
-                <Center>
-                  <IconEye
-                    size="1rem"
-                    stroke={1.5}
-                    color={theme.colors.dark[2]}
-                  />
-                  <Text size="sm" className={classes.bodyText} title={views}>
-                    {formatViewCount(views)}
-                  </Text>
-                </Center>
-                {/* <Center>
+              <Group position="apart" spacing="xs">
+                <Text size="sm" className={classes.author}>
+                  {author}
+                </Text>
+
+                <Group spacing="lg">
+                  <Center>
+                    <IconEye
+                      size="1rem"
+                      stroke={1.5}
+                      color={theme.colors.dark[2]}
+                    />
+                    <Text size="sm" className={classes.bodyText} title={views}>
+                      {formatViewCount(views)}
+                    </Text>
+                  </Center>
+                  {/* <Center>
                   <IconMessageCircle
                     size="1rem"
                     stroke={1.5}
@@ -145,8 +186,9 @@ function ImageCard({ id, image, title, author, views, comments, link }) {
                     {comments}
                   </Text>
                 </Center> */}
+                </Group>
               </Group>
-            </Group>
+            </div>
           </div>
         </div>
       </Card>

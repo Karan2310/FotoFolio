@@ -67,7 +67,7 @@ const Dashboard = () => {
       <div className="body p-3 p-lg-4 px-lg-5">
         <h2 className="fw-700 mt-3 mt-md-1">Welcome {user.name},</h2>
         <div className="my-3 my-lg-2">
-          <ScreenTabs />
+          <ScreenTabs changeRefresh={changeRefresh} />
         </div>
         <AddImage changeRefresh={changeRefresh} />
       </div>
