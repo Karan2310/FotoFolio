@@ -1,7 +1,5 @@
 # FotoFolio
 
-# Image Gallery App with User Authentication
-
 A web application built with React, Redux, and cloud storage integration for users to upload, view, and track images. Features include user authentication, image uploading, cloud storage, image viewing tracking, and Redux state management.
 
 ## Features
