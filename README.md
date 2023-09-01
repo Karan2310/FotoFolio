@@ -17,6 +17,10 @@ A web application built with React, Redux, and cloud storage integration for use
 
 Explore the [Live Demo](https://foto-folio-kd.vercel.app/) to see FotoFolio in action.
 
+**Test Credentials:**
+- **Email:** test@test.com
+- **Password:** password
+
 ## Getting Started
 
 1. Clone the repository.
