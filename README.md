@@ -55,7 +55,7 @@ Explore the [Live Demo](https://foto-folio-kd.vercel.app/) to see FotoFolio in a
 </div>
 
 <div align="center">
-  <img width="500" alt="Screenshot 3" src="https://github.com/Karan2310/FotoFolio/assets/72909842/57571f48-88af-46cc-b647-795da0eeeb00">
-  <img width="500" alt="Screenshot 4" src="https://github.com/Karan2310/FotoFolio/assets/72909842/9c529884-e6d4-46a8-b77f-a1ce7b12b53f">
+  <img width="400" alt="Screenshot 3" src="https://github.com/Karan2310/FotoFolio/assets/72909842/57571f48-88af-46cc-b647-795da0eeeb00">
+  <img width="400" alt="Screenshot 4" src="https://github.com/Karan2310/FotoFolio/assets/72909842/9c529884-e6d4-46a8-b77f-a1ce7b12b53f">
 </div>
 </div>
