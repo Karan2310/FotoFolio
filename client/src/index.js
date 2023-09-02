@@ -5,6 +5,7 @@ import App from "./App";
 import { CookiesProvider } from "react-cookie";
 import { Provider } from "react-redux";
 import store from "./store";
+import { Analytics } from "@vercel/analytics/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +13,7 @@ root.render(
     <Provider store={store}>
       <CookiesProvider>
         <App />
+        <Analytics />
       </CookiesProvider>
     </Provider>
   </React.StrictMode>
