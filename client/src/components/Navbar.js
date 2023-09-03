@@ -9,7 +9,17 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar -flex align-items-center justify-content-between p-3 p-lg-3 px-lg-5 bg-purple">
-        <h3 className="fw-800">FOTOFOLIO</h3>
+        <div className="d-flex align-items-center ">
+          <div className="bg-white rounded-3 p-0 me-2">
+            <img
+              className="p-0 m-0 img-fluid"
+              src="/FotoFolio.png"
+              alt="Description of the image"
+              style={{ width: "30px" }}
+            />
+          </div>
+          <h3 className="fw-800">FOTOFOLIO</h3>
+        </div>
         <button
           className="logout-btn "
           radius="md"
